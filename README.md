@@ -21,6 +21,7 @@ A curated collection of app UI screenshots to inspire designers and developers. 
 - **Authentication**: Auth.js (NextAuth)
 - **Database**: PostgreSQL
 - **ORM**: Prisma
+- **Testing**: Jest and React Testing Library
 
 ## 📋 Prerequisites
 
@@ -58,9 +59,42 @@ pixel-scout/
 ├── src/
 │   ├── app/        # Next.js app directory containing routes
 │   ├── components/ # Reusable React components
-│   └── lib/        # Utility functions and shared code
+│   ├── lib/        # Utility functions and shared code
+│   └── __tests__/  # Test files for components and functionality
 ├── .env            # Environment variables (create from .env.example)
 └── ...            # Config files
+```
+
+## 🧪 Testing
+
+The project uses Jest and React Testing Library for testing UI components and functionality.
+
+### Running Tests
+
+```bash
+# Run all tests
+pnpm test
+
+# Run tests in watch mode (useful during development)
+pnpm test:watch
+```
+
+### Writing Tests
+
+Tests are located in the `src/__tests__/` directory and follow the naming convention of `ComponentName.test.tsx`.
+
+Example test structure:
+
+```tsx
+import { render, screen } from "@testing-library/react";
+import Component from "@/components/Component";
+
+describe("Component", () => {
+  it("renders correctly", () => {
+    render(<Component />);
+    expect(screen.getByText("Some text")).toBeInTheDocument();
+  });
+});
 ```
 
 ## 🤝 Contributing
@@ -84,6 +118,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Next.js](https://nextjs.org) - The React Framework for the Web
 - [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework
 - [Radix UI](https://www.radix-ui.com) - Unstyled, accessible UI components
+- [Jest](https://jestjs.io/) - JavaScript Testing Framework
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - React DOM testing utilities
 
 ---
 

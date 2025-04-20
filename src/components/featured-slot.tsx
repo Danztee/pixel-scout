@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 
 const FeaturedSlot = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,7 +44,6 @@ const FeaturedSlot = () => {
   ];
 
   useEffect(() => {
-    // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
     const container = containerRef.current;
@@ -52,18 +52,13 @@ const FeaturedSlot = () => {
 
     if (!container || !gallery || panels.length === 0) return;
 
-    // Calculate the total width for horizontal scrolling
-    // We need to scroll less since we're showing 4 items at once
     const totalPanelWidth = panels.reduce(
       (width, panel) => width + (panel?.offsetWidth || 0),
       0
     );
 
-    // We need to scroll only enough to see the last item
-    // Since we're showing 4 at once, we need to scroll (totalItems - 4) * panelWidth
     const scrollDistance = Math.max(0, totalPanelWidth - window.innerWidth);
 
-    // Create the horizontal scroll animation
     const scrollTween = gsap.to(gallery, {
       x: () => -scrollDistance,
       ease: "none",
@@ -71,24 +66,22 @@ const FeaturedSlot = () => {
         trigger: container,
         pin: true,
         scrub: 1,
-        end: () => `+=${scrollDistance + window.innerWidth * 0.5}`, // Add some extra scroll distance
+        end: () => `+=${scrollDistance + window.innerWidth * 0.5}`,
         invalidateOnRefresh: true,
       },
     });
 
-    // Create animations for filling the numbers
     panels.forEach((panel, index) => {
       const numberElement = panel?.querySelector(".number-outline");
       if (numberElement) {
-        // Set initial styles based on index
         if (index === 0) {
           gsap.set(numberElement, {
-            color: "#EE2A7B", // First number starts filled
+            color: "#EE2A7B",
             WebkitTextStroke: "1px #EE2A7B",
           });
         } else {
           gsap.set(numberElement, {
-            color: "transparent", // Others start as outlines
+            color: "transparent",
             WebkitTextStroke: "1px #EE2A7B",
           });
         }
@@ -116,7 +109,6 @@ const FeaturedSlot = () => {
     });
 
     return () => {
-      // Clean up ScrollTrigger on component unmount
       scrollTween.scrollTrigger?.kill();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -171,11 +163,11 @@ const FeaturedSlot = () => {
           ))}
         </div>
 
-        <div className="flex justify-center mt-8">
-          <button className="px-6 py-4 rounded-3xl text-white font-medium bg-black border border-[#474D5099] bg-gradient-to-b from-[rgba(255,255,255,0.08)] via-[rgba(255,255,255,0.024)] to-[rgba(255,255,255,0.08)]">
+        <Link href="" className="flex justify-center mt-8">
+          <button className="px-6 py-4 rounded-3xl text-white font-medium bg-black border border-[#474D5099] bg-gradient-to-b from-[rgba(255,255,255,0.08)] via-[rgba(255,255,255,0.024)] to-[rgba(255,255,255,0.08)] cursor-pointer">
             Explore Now
           </button>
-        </div>
+        </Link>
       </div>
     </div>
   );

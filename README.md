@@ -17,6 +17,10 @@ A curated collection of app UI screenshots to inspire designers and developers. 
 - **Styling**: Tailwind CSS 4
 - **Animations**: Lenis for smooth scrolling
 - **UI Components**: Built with Radix UI primitives
+- **API Routes**: Next.js API routes
+- **Authentication**: Auth.js (NextAuth)
+- **Database**: PostgreSQL
+- **ORM**: Prisma
 
 ## 📋 Prerequisites
 

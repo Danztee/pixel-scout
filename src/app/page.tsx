@@ -1,6 +1,7 @@
 import Header from "@/components/header";
 import Image from "next/image";
-import icons from "@/public/icons.png";
+import icons from "@/public/landing-page/icons.png";
+import FeaturedSlot from "@/components/featured-slot";
 
 export default function Home() {
   return (
@@ -39,6 +40,10 @@ export default function Home() {
             </div>
           </section>
         </Header>
+
+        <section>
+          <FeaturedSlot />
+        </section>
       </main>
     </div>
   );

@@ -11,7 +11,7 @@ type providersProps = {
 const Providers: React.FC<providersProps> = ({ children }) => {
   return (
     <>
-      <ReactLenis root options={{ duration: 0.6, easing: (t) => t }}>
+      <ReactLenis root options={{ duration: 0.2, easing: (t) => t }}>
         <CookieConsent />
         {children}
       </ReactLenis>

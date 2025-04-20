@@ -16,7 +16,7 @@ A curated collection of app UI screenshots to inspire designers and developers. 
 - **Frontend**: Next.js 15, React 19
 - **Styling**: Tailwind CSS 4
 - **Animations**: Lenis for smooth scrolling
-- **UI Components**: Built with Radix UI primitives
+- **UI Components**: Built with Radix UI primitives and Shadcn UI
 - **API Routes**: Next.js API routes
 - **Authentication**: Auth.js (NextAuth)
 - **Database**: PostgreSQL

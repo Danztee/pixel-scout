@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pixel Scout 🎨
 
-## Getting Started
+A curated collection of app UI screenshots to inspire designers and developers. Pixel Scout helps you level up your designs with handpicked UI references from top iOS and Android applications.
 
-First, run the development server:
+![Pixel Scout](https://via.placeholder.com/800x400?text=Pixel+Scout)
+
+## 🚀 Features
+
+- **Curated UI Screenshots**: Handpicked collection of beautiful UI designs
+- **Platform Filtering**: Browse designs specifically for iOS or Android
+- **Modern Interface**: Clean, responsive UI built with Next.js and Tailwind CSS
+- **Open Source**: Freely available to use, modify, and contribute
+
+## 🛠️ Technology Stack
+
+- **Frontend**: Next.js 15, React 19
+- **Styling**: Tailwind CSS 4
+- **Animations**: Lenis for smooth scrolling
+- **UI Components**: Built with Radix UI primitives
+
+## 📋 Prerequisites
+
+- Node.js 18.0 or later
+- pnpm (required)
+
+## 🔧 Installation
+
+1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/pixel-scout.git
+cd pixel-scout
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Start the development server
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧩 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+pixel-scout/
+├── public/         # Static assets like images and icons
+├── src/
+│   ├── app/        # Next.js app directory containing routes
+│   ├── components/ # Reusable React components
+│   └── lib/        # Utility functions and shared code
+├── .env            # Environment variables (create from .env.example)
+└── ...            # Config files
+```
 
-## Deploy on Vercel
+## 🤝 Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes using [Conventional Commits](https://www.conventionalcommits.org/) format (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please make sure to update tests as appropriate.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Acknowledgments
+
+- [Next.js](https://nextjs.org) - The React Framework for the Web
+- [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework
+- [Radix UI](https://www.radix-ui.com) - Unstyled, accessible UI components
+
+---
+
+Made with ❤️ by [Open Designers](https://github.com/open-designers)

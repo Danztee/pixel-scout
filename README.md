@@ -28,7 +28,7 @@ A curated collection of app UI screenshots to inspire designers and developers. 
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/pixel-scout.git
+git clone https://github.com/opendesigners/pixel-scout.git
 cd pixel-scout
 ```
 

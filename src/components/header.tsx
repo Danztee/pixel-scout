@@ -8,18 +8,19 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ children }) => {
   return (
-    <header
-      style={{
-        backgroundImage: `url(${background.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "bottom",
-        height: "100%",
-      }}
-    >
-      <Navbar />
-
-      {children}
-    </header>
+    <>
+      <header
+        style={{
+          backgroundImage: `url(${background.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100%",
+        }}
+      >
+        <Navbar />
+        {children}
+      </header>
+    </>
   );
 };
 

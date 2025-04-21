@@ -120,7 +120,7 @@ const FeaturedSlot = () => {
       className="h-screen overflow-hidden space-y-16 pt-10"
     >
       <div className="flex justify-center">
-        <div className="bg-[#242728] border-[#474D50] border rounded-lg p-2 text-white w-fit">
+        <div className="bg-[#242728] border-[#474D50] border rounded-lg p-2 text-white text-sm w-fit">
           Featured Slot
         </div>
       </div>
@@ -135,7 +135,7 @@ const FeaturedSlot = () => {
             ref={(el) => {
               panelRefs.current[index] = el;
             }}
-            className="flex-shrink-0 w-1/4 px-4 h-full flex flex-col items-center justify-center"
+            className="flex-shrink-0 w-full md:w-1/4 px-4 h-full flex flex-col items-center justify-center m-2"
           >
             <div className="relative">
               <span

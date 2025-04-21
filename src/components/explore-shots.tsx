@@ -38,7 +38,7 @@ const ExploreShots = () => {
   return (
     <div className="space-y-16">
       <div className="flex justify-center">
-        <div className="bg-[#242728] border-[#474D50] border rounded-lg p-2 text-white w-fit">
+        <div className="bg-[#242728] border-[#474D50] border rounded-lg p-2 text-white text-sm w-fit">
           Explore Shots
         </div>
       </div>

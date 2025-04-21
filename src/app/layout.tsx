@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ProductSans, BooksellerBk } from "./font";
-import Providers from "@/components/providers";
+import Providers from "@/components/providers/app-providers";
 
 const productSans = ProductSans;
 const booksellerBk = BooksellerBk;
@@ -64,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${productSans.className} ${booksellerBk}`}>
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );

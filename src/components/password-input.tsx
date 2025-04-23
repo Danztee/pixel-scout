@@ -6,16 +6,9 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Input, type InputProps } from "@/components/ui/input";
 
-interface PasswordInputProps extends InputProps {
-  label?: string;
-}
-
-const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ className, label, ...props }, ref) => {
+const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, ...props }, ref) => {
     const [showPassword, setShowPassword] = React.useState(false);
-
-    const disabled =
-      props.value === "" || props.value === undefined || props.disabled;
 
     const handleToggleClick = () => {
       setShowPassword((prev) => !prev);
@@ -70,4 +63,4 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
 
 PasswordInput.displayName = "PasswordInput";
 
-export { PasswordInput, type PasswordInputProps };
+export { PasswordInput };

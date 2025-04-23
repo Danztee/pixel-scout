@@ -41,7 +41,7 @@ export default function SignIn() {
           >
             Password
           </Label>
-          <PasswordInput label="Password" id="password" />
+          <PasswordInput id="password" />
         </div>
 
         <div className="mb-6 text-right">

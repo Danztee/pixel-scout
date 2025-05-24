@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 import { FilterSearchComponent } from "@/components/category-filter";
 import { ExploreShotsBody, type Shot } from "@/components/explore-shots";
 import { ViewAllButton } from "@/components/explore-shots";
+import snapShots from "../snapPage/page";
 
 export default function ExplorePage() {
   const shots: Shot[] = [

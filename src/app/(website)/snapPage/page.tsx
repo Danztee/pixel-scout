@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import Navbar from "@/components/navbar";
 import { X } from 'lucide-react';
 
@@ -18,30 +18,36 @@ interface Screen {
   alt: string;
 }
 
+const staticAppData: AppData = {
+  name: "DoorDash",
+  description: "Food & groceries, delivered",
+  category: "Food",
+  icon: "D",
+  iconBg: "bg-red-500"
+};
+
 const SnapPage: React.FC = () => {
   const [selectedScreen, setSelectedScreen] = useState<Screen | null>(null);
 
-  const appData: AppData = {
-    name: "DoorDash",
-    description: "Food & groceries, delivered",
-    category: "Food",
-    icon: "D",
-    iconBg: "bg-red-500"
-  };
+  // Memoize arrays to prevent recreation on every render
+  const onboardingScreens = useMemo(() => 
+    Array.from({ length: 5 }, (_, i) => ({
+      id: i + 1,
+      imageUrl: `/mockup-${i + 1}.png`,
+      alt: `Onboarding screen ${i + 1}`
+    })), []
+  );
 
-  const onboardingScreens: Screen[] = Array.from({ length: 5 }, (_, i) => ({
-    id: i + 1,
-    imageUrl: `/mockup-${i + 1}.png`,
-    alt: `Onboarding screen ${i + 1}`
-  }));
+  const otherScreens = useMemo(() => 
+    Array.from({ length: 10 }, (_, i) => ({
+      id: i + 1,
+      imageUrl: `/screen-${i + 1}.png`,
+      alt: `App screen ${i + 1}`
+    })), []
+  );
 
-  const otherScreens: Screen[] = Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    imageUrl: `/screen-${i + 1}.png`,
-    alt: `App screen ${i + 1}`
-  }));
-
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>): void => {
+  // Memoize handlers to prevent child re-renders
+  const handleImageError = useCallback((e: React.SyntheticEvent<HTMLImageElement, Event>): void => {
     const target = e.target as HTMLImageElement;
     const fallbackElement = target.nextSibling as HTMLElement;
     
@@ -50,15 +56,15 @@ const SnapPage: React.FC = () => {
     if (fallbackElement) {
       fallbackElement.style.display = 'flex';
     }
-  };
+  }, []);
 
-  const openModal = (screen: Screen) => {
+  const openModal = useCallback((screen: Screen) => {
     setSelectedScreen(screen);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedScreen(null);
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-black">
@@ -68,17 +74,17 @@ const SnapPage: React.FC = () => {
       <div className="px-10 py-7">
         <div className="flex items-center space-x-4">
           <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center">
-            <div className={`w-12 h-12 ${appData.iconBg} rounded-lg flex items-center justify-center`}>
-              <span className="text-white font-bold text-lg">{appData.icon}</span>
+            <div className={`w-12 h-12 ${staticAppData.iconBg} rounded-lg flex items-center justify-center`}>
+              <span className="text-white font-bold text-lg">{staticAppData.icon}</span>
             </div>
           </div>
           
           <div>
-            <h1 className="text-2xl font-bold text-white">{appData.name}</h1>
-            <p className="text-gray-400">{appData.description}</p>
+            <h1 className="text-2xl font-bold text-white">{staticAppData.name}</h1>
+            <p className="text-gray-400">{staticAppData.description}</p>
             <div className="mt-2">
               <span className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">
-                {appData.category}
+                {staticAppData.category}
               </span>
             </div>
           </div>
@@ -104,6 +110,7 @@ const SnapPage: React.FC = () => {
                   alt={screen.alt}
                   className="w-full h-full object-cover"
                   onError={handleImageError}
+                  loading="lazy"
                 />
                 <div 
                   className="w-full h-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center" 
@@ -141,6 +148,7 @@ const SnapPage: React.FC = () => {
                   alt={screen.alt}
                   className="w-full h-full object-cover"
                   onError={handleImageError}
+                  loading="lazy"
                 />
                 <div 
                   className="w-full h-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center" 
@@ -159,7 +167,7 @@ const SnapPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Modal for enlarged screen view */}
+      {/* Modal */}
       {selectedScreen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-6 ">
           <div className="relative bg-gray-800 rounded-2xl max-w-md w-[328px] h-[670px] max-h-[70vh] overflow-hidden">

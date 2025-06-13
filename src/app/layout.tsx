@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ProductSans, BooksellerBk } from "./font";
-import Providers from "@/components/providers/app-providers";
 
 const productSans = ProductSans;
 const booksellerBk = BooksellerBk;

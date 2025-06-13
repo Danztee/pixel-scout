@@ -30,7 +30,9 @@
     "pg": "^8.16.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.2.0"
+    "sonner": "^2.0.5",
+    "tailwind-merge": "^3.2.0",
+    "zod": "^3.25.64"
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",
@@ -45,6 +47,7 @@
     "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20.19.0",
+    "@types/pg": "^8.15.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-jest": "^29.7.0",

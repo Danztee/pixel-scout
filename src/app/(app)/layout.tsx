@@ -1,5 +1,6 @@
+import { AppProviders } from "@/components/providers/app-providers";
 import React from "react";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return <AppProviders>{children}</AppProviders>;
 }

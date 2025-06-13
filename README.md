@@ -53,11 +53,30 @@ pnpm dev
 
 ## 🐳 Docker Setup
 
+### Prerequisites
+
+Before you can use Docker Compose, you need to have Docker installed on your system:
+
+1. **Install Docker Desktop**:
+
+   - [Download Docker Desktop](https://www.docker.com/products/docker-desktop/)
+   - Follow the installation instructions for your operating system:
+     - [Windows](https://docs.docker.com/desktop/install/windows-install/)
+     - [macOS](https://docs.docker.com/desktop/install/mac-install/)
+     - [Linux](https://docs.docker.com/desktop/install/linux-install/)
+
+2. **Verify Installation**:
+   After installation, open a terminal and run:
+   ```bash
+   docker --version
+   docker compose version
+   ```
+
 The project uses Docker Compose to run the PostgreSQL database. This ensures a consistent development environment across different machines.
 
 ### Running the Database
 
-1. Start the PostgreSQL database:
+1. Make sure you're in the project root directory (`pixel-scout/`), then start the PostgreSQL database:
 
 ```bash
 docker compose up -d
@@ -72,13 +91,13 @@ This will start a PostgreSQL 17 container with the following configuration:
 
 The database data is persisted in a Docker volume named `pixelscoutdb`.
 
-To stop the database:
+To stop the database (from the project root directory):
 
 ```bash
 docker compose down
 ```
 
-## 🧩 Project Structure
+## 📋 Project Structure
 
 ```
 pixel-scout/

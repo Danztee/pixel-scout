@@ -75,7 +75,7 @@ The database data is persisted in a Docker volume named `pixelscoutdb`.
 To stop the database:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ## 🧩 Project Structure

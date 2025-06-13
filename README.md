@@ -51,6 +51,33 @@ pnpm dev
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## 🐳 Docker Setup
+
+The project uses Docker Compose to run the PostgreSQL database. This ensures a consistent development environment across different machines.
+
+### Running the Database
+
+1. Start the PostgreSQL database:
+
+```bash
+docker-compose up -d
+```
+
+This will start a PostgreSQL 17 container with the following configuration:
+
+- Port: 5432
+- Username: user
+- Password: password
+- Database name: db
+
+The database data is persisted in a Docker volume named `pixelscoutdb`.
+
+To stop the database:
+
+```bash
+docker-compose down
+```
+
 ## 🧩 Project Structure
 
 ```

@@ -20,7 +20,7 @@ A curated collection of app UI screenshots to inspire designers and developers. 
 - **API Routes**: Next.js API routes
 - **Authentication**: Auth.js (NextAuth)
 - **Database**: PostgreSQL
-- **ORM**: Prisma
+- **ORM**: Drizzle ORM
 - **Testing**: Jest and React Testing Library
 
 ## 📋 Prerequisites
@@ -60,6 +60,7 @@ pixel-scout/
 │   ├── app/        # Next.js app directory containing routes
 │   ├── components/ # Reusable React components
 │   ├── lib/        # Utility functions and shared code
+│   ├── db/         # Database schema
 │   └── __tests__/  # Test files for components and functionality
 ├── .env            # Environment variables (create from .env.example)
 └── ...            # Config files
@@ -118,6 +119,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Next.js](https://nextjs.org) - The React Framework for the Web
 - [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework
 - [Radix UI](https://www.radix-ui.com) - Unstyled, accessible UI components
+- [Drizzle ORM](https://orm.drizzle.team) - TypeScript ORM for SQL databases
 - [Jest](https://jestjs.io/) - JavaScript Testing Framework
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - React DOM testing utilities
 

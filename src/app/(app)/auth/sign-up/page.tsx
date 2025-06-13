@@ -82,8 +82,8 @@ export default function SignUp() {
 
       const data = await response.json();
 
-      if (data.error) {
-        return toast.error(data.error);
+      if (!response.ok) {
+        return toast.error(data.error || "Failed to sign in");
       }
 
       console.log(data);

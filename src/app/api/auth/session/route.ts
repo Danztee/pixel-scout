@@ -8,7 +8,7 @@ import { sign } from "jsonwebtoken";
 
 // Input validation schema
 const loginSchema = z.object({
-  email: z.string().email(),
+  username: z.string().min(3).max(50),
   password: z.string().min(6),
 });
 
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     const validatedData = loginSchema.parse(body);
 
     const user = await db.query.users.findFirst({
-      where: eq(users.email, validatedData.email),
+      where: eq(users.username, validatedData.username),
     });
 
     if (!user) {

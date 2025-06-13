@@ -60,7 +60,7 @@ The project uses Docker Compose to run the PostgreSQL database. This ensures a c
 1. Start the PostgreSQL database:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 This will start a PostgreSQL 17 container with the following configuration:

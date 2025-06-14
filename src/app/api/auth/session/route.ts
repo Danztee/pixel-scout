@@ -1,12 +1,11 @@
-import { NextResponse } from "next/server";
-import { z } from "zod";
 import { db } from "@/db";
 import { users } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { signToken } from "@/lib/token";
 import bcrypt from "bcryptjs";
-import { sign } from "jsonwebtoken";
+import { eq } from "drizzle-orm";
+import { NextResponse } from "next/server";
+import { z } from "zod";
 
-// Input validation schema
 const loginSchema = z.object({
   username: z.string().min(3).max(50),
   password: z.string().min(6),
@@ -25,7 +24,7 @@ export async function POST(request: Request) {
     if (!user) {
       return NextResponse.json(
         {
-          error: "Invalid credentials",
+          error: "User not found",
         },
         { status: 401 }
       );
@@ -45,20 +44,30 @@ export async function POST(request: Request) {
       );
     }
 
-    const token = sign(
-      {
-        userId: user.id,
-      },
-      process.env.JWT_SECRET!,
-      { expiresIn: "24h" }
-    );
+    const token = await signToken(user.id);
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       {
-        token,
+        user: {
+          username: user.username,
+          email: user.email,
+          id: user.id,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
+        },
       },
       { status: 200 }
     );
+
+    response.cookies.set("chocoChip_7f3aX", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24, // 24 hours
+    });
+
+    return response;
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(

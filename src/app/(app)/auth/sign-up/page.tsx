@@ -86,7 +86,7 @@ export default function SignUp() {
         return toast.error(data.error || "Failed to sign in");
       }
 
-      console.log(data);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       toast.success("Account created successfully");
       setFormData({

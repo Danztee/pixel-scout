@@ -39,8 +39,7 @@ export default function SignIn() {
 
       console.log(data);
 
-      // Store the token in localStorage or your preferred storage
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       toast.success("Signed in successfully");
       setFormData({

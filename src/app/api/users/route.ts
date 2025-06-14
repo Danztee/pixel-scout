@@ -1,5 +1,6 @@
 import { db } from "@/db";
 import { users } from "@/db/schema";
+import { signToken } from "@/lib/token";
 import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
@@ -44,7 +45,7 @@ export async function POST(request: Request) {
 
     const hashedPassword = await bcrypt.hash(validatedData.password, 10);
 
-    await db
+    const newUser = await db
       .insert(users)
       .values({
         email: validatedData.email,
@@ -53,7 +54,30 @@ export async function POST(request: Request) {
       })
       .returning();
 
-    return NextResponse.json({ status: 201 });
+    const token = await signToken(newUser[0].id);
+
+    const response = NextResponse.json(
+      {
+        user: {
+          username: newUser[0].username,
+          email: newUser[0].email,
+          id: newUser[0].id,
+          createdAt: newUser[0].createdAt,
+          updatedAt: newUser[0].updatedAt,
+        },
+      },
+      { status: 201 }
+    );
+
+    response.cookies.set("chocoChip_7f3aX", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24, // 24 hours
+    });
+
+    return response;
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
@@ -68,4 +92,18 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+}
+
+export async function DELETE() {
+  const response = NextResponse.json({ status: 200 });
+
+  response.cookies.set("chocoChip_7f3aX", "", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 0,
+  });
+
+  return response;
 }

@@ -5,6 +5,7 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input, type InputProps } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 
 const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => {
@@ -19,7 +20,10 @@ const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
         <Input
           type={showPassword ? "text" : "password"}
           placeholder="*********"
-          className="hide-password-toggle placeholder:text-zinc-500"
+          className={cn(
+            "hide-password-toggle placeholder:text-zinc-500",
+            className
+          )}
           ref={ref}
           {...props}
           id="password"

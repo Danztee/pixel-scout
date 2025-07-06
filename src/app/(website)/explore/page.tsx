@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo } from 'react';
+import { useMemo } from "react";
 import Navbar from "@/components/navbar";
 import { FilterSearchComponent } from "@/components/category-filter";
 import { ExploreShotsBody, type Shot } from "@/components/explore-shots";
 import { ViewAllButton } from "@/components/explore-shots";
-import snapShots from "../snapPage/page";
+// import snapShots from "../snapPage/page";
 
 const staticShots: Shot[] = [
   {

@@ -1,6 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Navbar from "@/components/navbar";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 // Mock the next/navigation module
 jest.mock("next/navigation", () => ({
@@ -18,7 +19,7 @@ jest.mock("next/image", () => ({
     src: string;
     alt: string;
     className?: string;
-  }) => <img src={src} alt={alt} className={className} />,
+  }) => <Image src={src} alt={alt} className={className} />,
 }));
 
 // Mock the image imports

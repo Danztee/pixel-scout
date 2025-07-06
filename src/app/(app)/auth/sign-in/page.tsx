@@ -4,7 +4,7 @@ import { PasswordInput } from "@/components/password-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
-import { Mail, User } from "lucide-react";
+import { User } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -47,7 +47,8 @@ export default function SignIn() {
         password: "",
       });
       router.push("/dashboard");
-    } catch (err: any) {
+    } catch (err: unknown) {
+      console.error(err);
       toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
@@ -68,7 +69,7 @@ export default function SignIn() {
         Sign In
       </h1>
       <p className="mb-8 text-center text-zinc-400">
-        Don't have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link href="/auth/sign-up" className="text-amber-500 hover:underline">
           Sign up
         </Link>

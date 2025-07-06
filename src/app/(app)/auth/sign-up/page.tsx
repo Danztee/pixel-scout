@@ -96,8 +96,9 @@ export default function SignUp() {
       });
       setAcceptTerms(false);
       router.push("/dashboard");
-    } catch (err: any) {
-      toast.error("something went wrong");
+    } catch (err: unknown) {
+      console.error(err);
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }

@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-interface Shot {
+export interface Shot {
   image: string;
   title: string;
   tag: string;
@@ -24,8 +24,9 @@ export const ExploreShotsHeader: React.FC = () => {
   );
 };
 
-
-export const ExploreShotsBody: React.FC<ExploreShotsBodyProps> = ({ shots }) => {
+export const ExploreShotsBody: React.FC<ExploreShotsBodyProps> = ({
+  shots,
+}) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
       {shots.map((shot: Shot, index: number) => (
@@ -56,7 +57,6 @@ export const ExploreShotsBody: React.FC<ExploreShotsBodyProps> = ({ shots }) => 
     </div>
   );
 };
-
 
 export const ViewAllButton: React.FC = () => {
   const pathname = usePathname();

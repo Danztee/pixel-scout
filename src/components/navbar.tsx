@@ -51,18 +51,18 @@ const Navbar = () => {
       <div className="max-w-2xl mx-auto relative rounded-3xl lg:rounded-full flex flex-row justify-between items-center">
         <Link
           href="/"
-          className="bg-[#242728] border-[#474D50] border rounded-full p-2 lg:p-4 px-4 lg:px-6 text-white min-h-[40px] lg:min-h-[64px] flex items-center"
+          className="h-[3.5rem] bg-[#242728] border-[#474D50] border rounded-full p-2 lg:p-4 px-4 lg:px-6 text-white flex items-center"
         >
           <div
-            className="flex items-center justify-center cursor-pointer w-[100px] lg:w-[120px] h-[35px]"
+            className="flex items-center justify-center cursor-pointer"
             id="logo-cover"
           >
-            <Image src={logo} alt="logo" className="object-contain" />
+            <Image src={logo} alt="logo" className="object-contain w-[100px]" />
           </div>
         </Link>
 
         <ul
-          className="hidden lg:flex gap-8 flex-col lg:flex-row mt-8 lg:mt-0 bg-[#242728] border-[#474D50] border rounded-full p-4 px-6 text-white min-h-[64px] items-center"
+          className="h-[3.5rem] hidden lg:flex gap-8 flex-col lg:flex-row mt-8 lg:mt-0 bg-[#242728] border-[#474D50] border rounded-full p-2 px-4 text-white items-center"
           id="links"
         >
           {links
@@ -74,7 +74,7 @@ const Navbar = () => {
               <li key={index}>
                 <Link
                   href={link.route}
-                  className={`text-xl text-[var(--primary-color)] ${
+                  className={`p-2 text-lg text-[var(--primary-color)] ${
                     pathname === `${link.route}` ? "font-bold" : ""
                   }`}
                 >
@@ -85,7 +85,7 @@ const Navbar = () => {
 
           {pathname.startsWith("/dashboard") && (
             <li>
-              <button className="bg-[#242728] border-[#474D50] border rounded-[15px] p-4 text-white text-lg">
+              <button className="bg-[#242728] border-[#474D50] border rounded-[15px] p-2 text-white">
                 Contribute
               </button>
             </li>
@@ -96,7 +96,7 @@ const Navbar = () => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className="border border-[#474D5099] bg-[#242728] rounded-full p-1">
-                <Avatar className="w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] rounded-full cursor-pointer">
+                <Avatar className="w-[40px] lg:w-[45px] h-[40px] lg:h-[45px] rounded-full cursor-pointer">
                   <AvatarImage
                     src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${user.username}`}
                     alt={user.username}

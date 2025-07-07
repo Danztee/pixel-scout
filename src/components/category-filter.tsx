@@ -62,6 +62,8 @@ export function FilterSearchComponent() {
       <Input
         type="text"
         placeholder="Search for an app"
+        value={query}
+        onChange={handleQueryChange}
         icon={<Search size={20} />}
         className="w-[300px] border border-[#525252] bg-[#262626] rounded-[12px] text-white"
       />

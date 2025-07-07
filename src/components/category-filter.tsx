@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { Search } from "lucide-react";
+import { Input } from "./ui/input";
 
 interface Category {
   id: string;
@@ -52,23 +53,18 @@ export function FilterSearchComponent() {
   );
 
   return (
-    <div className="w-full px-4 sm:px-6 md:px-10 mb-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div className="flex flex-wrap justify-between gap-4">
       {/* Category Filter */}
       <div className="w-full sm:w-auto overflow-x-auto hide-scrollbar flex gap-2 pb-4 scroll-smooth snap-x">
         {categoryButtons}
       </div>
 
-      {/* Search Bar */}
-      <div className="w-full sm:w-auto max-w-full sm:max-w-[300px] relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-        <input
-          type="text"
-          placeholder="Search for an app"
-          value={query}
-          onChange={handleQueryChange}
-          className="w-full h-10 pl-10 pr-4 rounded-3xl bg-secondary text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-        />
-      </div>
+      <Input
+        type="text"
+        placeholder="Search for an app"
+        icon={<Search size={20} />}
+        className="w-[300px] border border-[#525252] bg-[#262626] rounded-[12px] text-white"
+      />
     </div>
   );
 }

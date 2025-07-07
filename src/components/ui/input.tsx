@@ -7,9 +7,9 @@ export interface InputProps extends React.ComponentProps<"input"> {
 
 function Input({ className, type, icon, ...props }: InputProps) {
   return (
-    <div className="relative w-full">
+    <div className="relative">
       {icon && (
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">
+        <div className="absolute left-3 top-[20px] -translate-y-1/2 text-zinc-400">
           {icon}
         </div>
       )}

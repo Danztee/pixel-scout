@@ -13,7 +13,7 @@ type AppProvidersProps = {
 };
 
 export function AppProviders({ children }: AppProvidersProps) {
-  const { fetchUser, isLoading } = useAuthStore();
+  const { fetchUser, isLoading, user } = useAuthStore();
 
   const pathname = usePathname();
 
@@ -30,6 +30,12 @@ export function AppProviders({ children }: AppProvidersProps) {
         <Loader2 className="animate-spin" size={50} />
       </div>
     );
+  }
+
+  // Client-side protection: redirect if no user but on dashboard
+  if (pathname.startsWith("/dashboard") && !isLoading && !user) {
+    window.location.href = "/auth/sign-in";
+    return null;
   }
 
   const isDashboard = pathname.startsWith("/dashboard");

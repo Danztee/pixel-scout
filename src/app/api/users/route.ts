@@ -97,12 +97,14 @@ export async function POST(request: Request) {
 export async function DELETE() {
   const response = NextResponse.json({ status: 200 });
 
+  // Clear the cookie by setting it to empty and expiring it
   response.cookies.set("chocoChip_7f3aX", "", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
     maxAge: 0,
+    expires: new Date(0), // Ensure it expires immediately
   });
 
   return response;

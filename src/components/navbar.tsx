@@ -47,7 +47,7 @@ const Navbar = () => {
   const { user } = useAuthStore();
 
   return (
-    <nav className="container mx-auto p-4 lg:p-8 py-10 lg:py-20">
+    <nav className="container mx-auto p-4 lg:p-8 py-10">
       <div className="max-w-2xl mx-auto relative rounded-3xl lg:rounded-full flex flex-row justify-between items-center">
         <Link
           href="/"

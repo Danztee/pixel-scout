@@ -2,7 +2,7 @@ import Header from "@/components/header";
 import Image from "next/image";
 import icons from "@/public/landing-page/icons.png";
 import FeaturedSlot from "@/components/featured-slot";
-import ExploreShots from "@/components/explore-shots";
+import Shots from "@/components/shots";
 
 export default function HomePage() {
   return (
@@ -44,12 +44,12 @@ export default function HomePage() {
           </section>
         </Header>
 
-        <section className="my-12 lg:my-20">
+        <section className="">
           <FeaturedSlot />
         </section>
 
         <section className="container mx-auto px-4 my-12 lg:my-20">
-          <ExploreShots />
+          <Shots />
         </section>
       </main>
     </div>

@@ -5,6 +5,8 @@ import { Loader2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 import { Toaster } from "sonner";
+import Navbar from "../navbar";
+import Footer from "../footer";
 
 type AppProvidersProps = {
   children: React.ReactNode;
@@ -29,10 +31,15 @@ export function AppProviders({ children }: AppProvidersProps) {
     );
   }
 
+  const isDashboard = pathname.startsWith("/dashboard");
+
   return (
     <>
-      {children}
       <Toaster richColors position="top-right" />
+
+      {isDashboard && <Navbar />}
+      {children}
+      {isDashboard && <Footer />}
     </>
   );
 }

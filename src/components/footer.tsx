@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
         </Link>
 
-        <ul className="flex lg:items-center gap-8 flex-col lg:flex-row mt-8 lg:mt-0 lg:flex bg-[#242728] border-[#474D50] border rounded-full p-4 text-white w-fit">
+        <ul className="flex lg:items-center gap-8 mt-8 lg:mt-0 lg:flex bg-[#242728] border-[#474D50] border rounded-full p-4 text-white w-fit">
           {links.map((link, index) => (
             <li key={index}>
               <Link

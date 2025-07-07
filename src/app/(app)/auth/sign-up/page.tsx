@@ -71,6 +71,32 @@ export default function SignUp() {
     e.preventDefault();
     setIsLoading(true);
 
+    if (formData.username.length < 3) {
+      return toast.error("Username must be at least 3 characters long");
+    }
+
+    if (formData.username.length > 20) {
+      return toast.error("Username must be no more than 20 characters long");
+    }
+
+    if (formData.username !== formData.username.toLowerCase()) {
+      return toast.error("Username must be lowercase only");
+    }
+
+    if (!/^[a-z0-9_-]+$/.test(formData.username)) {
+      return toast.error(
+        "Username can only contain lowercase letters, numbers, underscores, and hyphens"
+      );
+    }
+
+    if (/^[0-9]/.test(formData.username)) {
+      return toast.error("Username cannot start with a number");
+    }
+
+    if (formData.username.includes(" ")) {
+      return toast.error("Username cannot contain spaces");
+    }
+
     try {
       const response = await fetch("/api/users", {
         method: "POST",

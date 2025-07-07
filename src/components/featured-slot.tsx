@@ -115,10 +115,7 @@ const FeaturedSlot = () => {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="h-screen overflow-hidden space-y-16 pt-10"
-    >
+    <div ref={containerRef} className="overflow-hidden space-y-16 pt-10">
       <div className="flex justify-center">
         <div className="bg-[#242728] border-[#474D50] border rounded-lg p-2 text-white text-sm w-fit">
           Featured Slot
@@ -165,7 +162,7 @@ const FeaturedSlot = () => {
         ))}
       </div>
 
-      <Link href="" className="flex justify-center mt-8">
+      <Link href="/dashboard" className="flex justify-center mt-8">
         <button className="px-8 py-4 rounded-3xl text-white font-medium bg-black border border-[#474D5099] bg-gradient-to-b from-[rgba(255,255,255,0.08)] via-[rgba(255,255,255,0.024)] to-[rgba(255,255,255,0.08)] cursor-pointer">
           Explore Now
         </button>

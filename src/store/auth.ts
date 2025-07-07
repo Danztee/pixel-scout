@@ -49,6 +49,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         const user = JSON.parse(localStorage.getItem("user") || "null");
         set({ user, isLoading: false, error: null });
       } catch (parseError) {
+        console.log(parseError);
         localStorage.removeItem("user");
         set({
           user: null,

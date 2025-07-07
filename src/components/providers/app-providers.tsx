@@ -13,7 +13,7 @@ type AppProvidersProps = {
 };
 
 export function AppProviders({ children }: AppProvidersProps) {
-  const { fetchUser, isLoading, user } = useAuthStore();
+  const { fetchUser, isLoading } = useAuthStore();
 
   const pathname = usePathname();
 

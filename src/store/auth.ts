@@ -23,15 +23,39 @@ export const useAuthStore = create<AuthState>((set) => ({
   error: null,
   fetchUser: async () => {
     try {
-      const user = JSON.parse(localStorage.getItem("user") || "null");
+      set({ isLoading: true });
 
-      console.log(user, "user");
-      set({ user, isLoading: false });
-    } catch (error) {
-      set({
-        error: error instanceof Error ? error.message : "An error occurred",
-        isLoading: false,
+      // First try to get user from server to validate token
+      const response = await fetch("/api/auth/session", {
+        method: "GET",
+        credentials: "include", // Include cookies
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        const user = data.user;
+
+        // Update localStorage with fresh data
+        localStorage.setItem("user", JSON.stringify(user));
+        set({ user, isLoading: false, error: null });
+      } else {
+        // Server token invalid, clear localStorage and user state
+        localStorage.removeItem("user");
+        set({ user: null, isLoading: false, error: null });
+      }
+    } catch (error) {
+      // Fallback to localStorage if server is unreachable
+      try {
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+        set({ user, isLoading: false, error: null });
+      } catch (parseError) {
+        localStorage.removeItem("user");
+        set({
+          user: null,
+          error: error instanceof Error ? error.message : "An error occurred",
+          isLoading: false,
+        });
+      }
     }
   },
 

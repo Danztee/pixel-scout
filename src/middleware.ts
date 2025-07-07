@@ -11,15 +11,11 @@ export default function middleware(req: NextRequest) {
 
   const token = req.cookies.get("chocoChip_7f3aX");
 
-  if (isProtectedRoute && (!token || token === undefined)) {
+  if (isProtectedRoute && !token) {
     return NextResponse.redirect(new URL("/auth/sign-in", req.nextUrl));
   }
 
-  if (
-    isPublicRoute &&
-    token &&
-    !req.nextUrl.pathname.startsWith("/dashboard")
-  ) {
+  if (isPublicRoute && token) {
     return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
   }
 

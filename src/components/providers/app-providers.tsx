@@ -23,7 +23,8 @@ export function AppProviders({ children }: AppProvidersProps) {
     }
   }, [fetchUser, pathname]);
 
-  if (isLoading && !user && !pathname.startsWith("/auth")) {
+  // Only show loading for dashboard routes while checking auth
+  if (isLoading && pathname.startsWith("/dashboard")) {
     return (
       <div className="flex justify-center items-center h-screen">
         <Loader2 className="animate-spin" size={50} />

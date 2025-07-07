@@ -37,14 +37,18 @@ const Navbar = () => {
     const data = await response.json();
 
     if (!response.ok) {
-      return toast.error(data.error || "Failed to sign in");
+      return toast.error(data.error || "Failed to log out");
     }
+
+    // Clear the user state and localStorage
+    clearUser();
+    localStorage.removeItem("user");
 
     toast.success("Logged out successfully");
     router.push("/auth/sign-in");
   };
 
-  const { user } = useAuthStore();
+  const { user, clearUser } = useAuthStore();
 
   return (
     <nav className="container mx-auto p-4 lg:p-8 py-10">

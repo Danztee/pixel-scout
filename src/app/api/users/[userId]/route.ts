@@ -20,13 +20,12 @@ export async function GET(
       );
     }
 
-    let id = "";
-
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {
       userId: string;
     };
 
     const authenticatedUserId = decoded.userId;
+    let id = "";
 
     if (userId === "me") {
       id = authenticatedUserId;
@@ -35,6 +34,8 @@ export async function GET(
         { error: "You can only access your own user data" },
         { status: 403 }
       );
+    } else {
+      id = userId;
     }
 
     const user = await db.select().from(users).where(eq(users.id, id));

@@ -49,8 +49,8 @@ const Page = () => {
           <Image
             src={details.image}
             alt={details.title}
-            width={200}
-            height={200}
+            width={150}
+            height={150}
           />
         </div>
 
@@ -60,7 +60,7 @@ const Page = () => {
             {details.description}
           </p>
 
-          <p className="text-sm text-[#fff] bg-[#242728] rounded-[12px] px-4 py-2 w-fit">
+          <p className="text-sm text-[#fff] bg-[#242728] rounded-[38px] border-none px-4 py-2 w-fit">
             {details.tag.join(", ")}
           </p>
         </div>
@@ -70,7 +70,7 @@ const Page = () => {
         {details.screenshots.map((screenshot, index) => (
           <div key={index}>
             <h1 className="text-2xl font-bold">{screenshot.page}</h1>
-            <div className="grid lg:grid-cols-5 gap-6 mt-8">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-8">
               {screenshot.screens.map((screen, index) => (
                 <Image
                   key={index}

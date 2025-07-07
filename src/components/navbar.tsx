@@ -65,18 +65,31 @@ const Navbar = () => {
           className="hidden lg:flex gap-8 flex-col lg:flex-row mt-8 lg:mt-0 bg-[#242728] border-[#474D50] border rounded-full p-4 px-6 text-white min-h-[64px] items-center"
           id="links"
         >
-          {links.map((link, index) => (
-            <li key={index}>
-              <Link
-                href={link.route}
-                className={`text-xl text-[var(--primary-color)] ${
-                  pathname === `${link.route}` ? "font-bold" : ""
-                }`}
-              >
-                {link.label}
-              </Link>
+          {links
+            .filter(
+              (link) =>
+                !(pathname.startsWith("/dashboard") && link.label === "About")
+            )
+            .map((link, index) => (
+              <li key={index}>
+                <Link
+                  href={link.route}
+                  className={`text-xl text-[var(--primary-color)] ${
+                    pathname === `${link.route}` ? "font-bold" : ""
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+
+          {pathname.startsWith("/dashboard") && (
+            <li>
+              <button className="bg-[#242728] border-[#474D50] border rounded-[15px] p-4 text-white text-lg">
+                Contribute
+              </button>
             </li>
-          ))}
+          )}
         </ul>
 
         {user ? (
